@@ -13,7 +13,7 @@ const Logo = () => {
         //     width="100"
         //     src="/images/logo.png"
         // />
-        <h1 className="text-xl font-semibold cursor-pointer"> PLAYNOW </h1>
+        <p className="text-xl font-semibold cursor-pointer"> PLAY<span className=" text-sky-500 font-bol">NOW</span> </p>
     )
 }
 
