@@ -1,12 +1,29 @@
 'use client';
 import {BiSearch} from 'react-icons/bi'
+import { useCallback, useState } from 'react';
+import MenuItem from './MenuItem';
 
 const Search = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedSport, setSelectedSport] = useState("Tennis");
+
+    const toggleOpen = useCallback(() => {
+        setIsOpen((value) => !value);
+    }, []);
+
+    const selectSport = useCallback(() => {
+        if (selectedSport === "Tennis") {
+            setSelectedSport(() => "Squash");
+        } else {
+            setSelectedSport(() => "Tennis");
+        }
+    }, [selectedSport]);
+
     return (
         <div className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer">
             <div className="flex flex-row items-center justify-between">
-            <div className="text-sm font-semibold px-6">
-                    Tennis
+            <div className="text-sm font-semibold px-6" onClick={toggleOpen}>
+                   {selectedSport}
                 </div>
                 <div className="text-sm font-semibold px-6 border-x-[1px]">
                     Anywhere
@@ -21,6 +38,14 @@ const Search = () => {
                 </div>
                 
             </div>
+            {isOpen && (
+                <div className='absolute rounded-xl shadow-md w-[100px] bg-white overflow-hidden top-20 text-sm'>
+                    <div className='flex flex-col cursor-pointer'>
+                        <MenuItem label={selectedSport == "Tennis" ? "Squash" : "Tennis"} onClick={ selectSport }/>
+                    </div>
+                </div>
+            )
+            }
         </div>
     )
 }
