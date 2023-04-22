@@ -2,6 +2,7 @@
 import Image from "next/image";
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
 import { useState, useCallback } from "react";
+import useClubModal from "@/pages/hooks/useClubModal";
 
 interface ClubCellProps {
     name: string;
@@ -14,8 +15,7 @@ const ClubCell: React.FC<ClubCellProps> = ({
     available,
     images
 }) => {
-    // const images = ["/bloniasport.webp", "/bloniasport1.jpeg"]
-
+    const clubModal = useClubModal();
     const [selectedImage, setSelectedImage] = useState(0);
 
     const handleRighttArrow = useCallback(() => {
@@ -42,7 +42,7 @@ const ClubCell: React.FC<ClubCellProps> = ({
                  </div>
             </div>
             <div className="grid grid-cols-2 gap-2 text-white pt-2 px-2">
-                    <h2 className=" bg-sky-500 justify-center flex rounded-lg p-1 hover:border-white border-2 border-transparent hover:cursor-pointer"> {available[0]}</h2>
+                    <h2 onClick={clubModal.onOpen} className=" bg-sky-500 justify-center flex rounded-lg p-1 hover:border-white border-2 border-transparent hover:cursor-pointer"> {available[0]}</h2>
                     <h2 className=" bg-sky-500 justify-center flex rounded-lg p-1 hover:border-white border-2 border-transparent hover:cursor-pointer"> {available[1]}</h2>
             </div>
         </div>

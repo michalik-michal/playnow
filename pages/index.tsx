@@ -3,7 +3,8 @@ import RegisterModal from "./Components/modals/RegisterModal"
 import ToasterProvider from "./providers/ToasterProvider"
 import LoginModal from "./Components/modals/LoginModal"
 import Map from "./Components/map/Map"
-import ClubCell from "./Components/clubcell/ClubCell"
+import ClubCell from "./Components/cells/ClubCell"
+import ClubModal from "./Components/modals/ClubModal"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ToasterProvider/>
       <RegisterModal/>
       <LoginModal/>
+      <ClubModal clubName="Blonia Sport"/>
       <NavBar/>
       <div className="flex flex-row-reverse pt-[86px]">
           <Map/>
